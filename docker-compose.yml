@@ -1,17 +1,17 @@
 version: '3'
 
 services:
+  database:
+    image: mongo
+
   reviews:
     build: service-chris/
     depends_on:
       - 'database'
     ports:
-      - '3002:8080'
+      - '3002:3002'
 
   proxy:
     build: proxy/
     ports:
-      - '3010:8080'
-
-  database:
-    image: mongo:latest
+      - '3010:3010'
